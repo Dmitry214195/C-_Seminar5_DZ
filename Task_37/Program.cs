@@ -1,34 +1,69 @@
-﻿// Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
+﻿//Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
+
+Console.WriteLine("Введите размер массива: ");
+
+int size = Convert.ToInt32(Console.ReadLine());
+
+int[] numbers = new int[size];
+
+FillArrayRandomNumbers(numbers);
+
+Console.Write("Mассив: ");
+
+PrintArray(numbers);
+
+int[] result = null;
 
 
-int J;
-            Console.Write("Введите размерность массива");
-            J = int.Parse(Console.ReadLine());
-            double[] chisla = new double[J];
-            int h;
-            if (J % 2 == 0)
-            {
-                h = J / 2;
-            }
-            else
-            {
-                h = J / 2 + 1;
-            }
-            double[] resultat = new double[h];
-            for (int i = 0; i < J; i++)
-            {
-                Console.Write("Введите " + (i + 1) + " элемент массива ");
-                chisla[i] = double.Parse(Console.ReadLine());
-            }
-            double k = 0;
-            for (int i = 0, j = 0; i < J; j++, i += 2)
-            {
-                k = (chisla[i] * chisla[i + 1]);
-                resultat[j] = k;
-                Console.WriteLine(resultat[j]);
-            }
-            for (var i = 1; i < J; i++)
+if (numbers.Length % 2 == 0)
 {
-    resultat[i - 1] = chisla[i - 1] * chisla[i];
-    Console.WriteLine(resultat[i - 1]);
+    size = numbers.Length / 2;
+    result = new int[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        result[i] = numbers[i] * numbers[numbers.Length - i - 1];
+    }
+}
+else
+{
+    size = (numbers.Length / 2) + 1;
+    result = new int[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        if (i == (size - 1))
+        {
+            result[i] = numbers[i];
+        }
+        else
+        {
+            result[i] = numbers[i] * numbers[numbers.Length - i - 1];
+        }
+    }
+}
+
+for (int i = 0; i < size; i++)
+{
+    Console.Write(result[i] + ",");
+
+}
+
+void FillArrayRandomNumbers(int[] numbers)
+{
+    for (int i = 0; i < numbers.Length; i++)
+    {
+        numbers[i] = new Random().Next(1, 10);
+    }
+}
+
+void PrintArray(int[] numbers)
+{
+    Console.Write("[ ");
+    for (int i = 0; i < numbers.Length; i++)
+    {
+        Console.Write(numbers[i] + " ");
+    }
+    Console.Write("]");
+    Console.WriteLine();
 }
