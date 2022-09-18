@@ -1,19 +1,13 @@
 ﻿//Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
 
 Console.WriteLine("Введите размер массива: ");
-
 int size = Convert.ToInt32(Console.ReadLine());
-
 int[] numbers = new int[size];
-
 FillArrayRandomNumbers(numbers);
-
 Console.Write("Mассив: ");
-
 PrintArray(numbers);
 
 int[] result = null;
-
 
 if (numbers.Length % 2 == 0)
 {
@@ -42,13 +36,11 @@ else
         }
     }
 }
-
 for (int i = 0; i < size; i++)
 {
     Console.Write(result[i] + ",");
 
 }
-
 void FillArrayRandomNumbers(int[] numbers)
 {
     for (int i = 0; i < numbers.Length; i++)
@@ -56,7 +48,6 @@ void FillArrayRandomNumbers(int[] numbers)
         numbers[i] = new Random().Next(1, 10);
     }
 }
-
 void PrintArray(int[] numbers)
 {
     Console.Write("[ ");
